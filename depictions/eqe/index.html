@@ -1,0 +1,114 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="menes.css"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0"/>
+    <style>
+//body {
+//    margin:0px;
+//    width:320px;
+//}
+.boxcontainer{
+    width:320px;
+    height:147.5px;
+    overflow:hidden;
+}
+.box {
+    position: relative;
+    margin:0px;
+    padding:0px;
+    background: #ff0000;
+    left: 0px;
+    top: 0px;
+    width: 960px;
+    height: 147.5px;
+    -webkit-transition:all 0.4s ease;
+    -moz-transition:all 0.4s ease;
+    -o-transition:all 0.4s ease;
+    -ms-transition:all 0.s ease;    
+    transition:all 0.4s ease;
+}
+.box > textarea{
+    padding: 0px;
+}
+.bg
+{
+    background-image: url('cc.png');
+    t-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width:320px;
+    height:134px;
+    overflow:hidden;
+}
+
+    </style>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript">
+$(document).ready(function() {
+    
+    var me = $('.box');
+    var timeout;
+    var currentIndex = 2;
+    var goingRight = false;
+    var rofl;
+    function rofl()
+    {
+        if(timeout)
+        {
+            currentIndex += goingRight ? 1 : -1;
+            if(currentIndex > 2 || currentIndex < 0)
+            {
+                currentIndex = 1;
+                goingRight = !goingRight;
+            }
+            me.css('left', -640 + 320*currentIndex);
+        }
+        timeout = setTimeout(rofl, 1000);
+    };
+
+    rofl();
+});
+
+    </script>
+</head>
+<body class="pinstripe">
+    <panel>
+    <fieldset>
+        <a href="changelog.html">
+            <img class="icon" src="http://cache.saurik.com/crystal/32x32/apps/clock.png"/>
+            <div><label>Changelog</label></div>
+        </a>
+</fieldset>
+<fieldset style="clear:both">
+    <div style="font-size:14px">
+        This tweak will make your audio sound better to suit your speakers. Change the sliders to modify bass, treble or mids.<br/><br/>It applies the equalization to your speaker output. So it works with every app.
+    </div>
+</fieldset>
+<div class="bg"></div>
+<div class="boxcontainer">
+    <img class="box" src="eq.png"/>
+</div>
+
+<fieldset>
+<div style="font-size:14px;">
+    It includes a preamp and it has 10 frequency bands: 60, 170, 310, 600, 1K, 3K, 6K, 12K, 14K and 16K Hz. It ranges from -12 to +12 dB.<br/>
+    <br/>
+    You can also save and set presets if you have multiple types of speakers.
+</div>
+</fieldset>
+<img src="presets.png" style="width:320px"/>
+<fieldset>
+<div style="font-size:14px;">
+    It is also availble in settings if you don't like it in the Control Center.
+</div>
+</fieldset>
+<img src="settings.png" style="width:320px"/>
+<fieldset>
+<div style="font-size:14px;">
+    In a future update (no ETA) you will be able to add custom frequency bands (like 32Hz) and custom filters too! (like bandpass filters)
+</div>
+</fieldset>
+</panel>
+</body>
+</html>
