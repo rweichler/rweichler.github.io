@@ -1,113 +1,35 @@
-<html>
-<head>
-    <link rel="stylesheet" type="text/css" href="menes.css"/>
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0"/>
-    <style>
-//body {
-//    margin:0px;
-//    width:320px;
-//}
-.boxcontainer{
-    width:320px;
-    height:147.5px;
-    overflow:hidden;
-}
-.box {
-    position: relative;
-    margin:0px;
-    padding:0px;
-    left: -320px;
-    top: 0px;
-    width: 960px;
-    height: 147.5px;
-    -webkit-transition:all 0.4s ease;
-    -moz-transition:all 0.4s ease;
-    -o-transition:all 0.4s ease;
-    -ms-transition:all 0.s ease;    
-    transition:all 0.4s ease;
-}
-.box > textarea{
-    padding: 0px;
-}
-.bg
-{
-    background-image: url('cc.png');
-    t-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    width:320px;
-    height:134px;
-    overflow:hidden;
-}
-
-    </style>
-<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
-    <script type="text/javascript">
-$(document).ready(function() {
-    
-    var me = $('.box');
-    var timeout;
-    var currentIndex = 1;
-    var goingRight = false;
-    var rofl;
-    function rofl()
-    {
-        if(timeout)
-        {
-            currentIndex += goingRight ? 1 : -1;
-            if(currentIndex > 2 || currentIndex < 0)
-            {
-                currentIndex = 1;
-                goingRight = !goingRight;
-            }
-            me.css('left', -640 + 320*currentIndex);
-        }
-        timeout = setTimeout(rofl, 1000);
-    };
-
-    rofl();
-});
-
-    </script>
-</head>
-<body>
-    <panel>
-<div class="bg"></div>
-<div class="boxcontainer">
-    <img class="box" src="eq.png"/>
-</div>
-<fieldset>
-<div style="font-size:14px;">
-    <b>KEEP IN MIND:</b> THIS IS <u>BETA</u> software! These usually are unstable. Only update if the contents of the changelog appeals to you!
-</div>
-</fieldset>
+<html><head><title>Changelog</title>
+	<link rel="stylesheet" type="text/css" href="menes.css"/>
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0"/>
+</head><body>
+<H1>KEEP IN MIND THIS IS BETA SOFTWARE!</H1>
+<panel>
+    <label>1.5.4-2 beta<br/><span style="font-size:12px">19 June 2015</span></label>
     <fieldset>
-        <a href="changelog.html">
-            <img class="icon" src="http://cache.saurik.com/crystal/32x32/apps/clock.png"/>
-            <div><label>Changelog</label></div>
-        </a>
-</fieldset>
-<fieldset style="clear:both">
-    <div style="font-size:14px">
-        This tweak will make your audio sound better to suit your speakers/headphones. Change the sliders to modify bass, treble or mids.<br/><br/>It applies the equalization to your speaker output via Core Audio. So it works with every app.<br/><br/> It  works with every type of Apple supported audio output (i.e. the earpiece, earbuds, AUX, bluetooth, dock speakers, and AirPlay).
-    </div>
-</fieldset>
-<img src="speaker.jpg" style="width:320px"/>
-<fieldset>
-<div style="font-size:14px;">
-    It includes a preamp and it has 10 frequency bands: 60, 170, 310, 600, 1K, 3K, 6K, 12K, 14K and 16K Hz. It ranges from -12 to +12 dB.<br/>
-    <br/>
-    You can also save and set presets if you have multiple types of speakers/headphones.
-</div>
-</fieldset>
-<img src="presets.png" style="width:320px"/>
-<fieldset>
-<div style="font-size:14px;">
-    It is also availble in settings if you don't like it in the Control Center.
-</div>
-</fieldset>
-<img src="settings.png" style="width:320px"/>
+        <div><label>Attempt to fix all intermittent mediaserverd crashes once and for all</label></div>
+    </fieldset>
+    <label>1.5.4<br/><span style="font-size:12px">31 December 2014</span></label>
+    <fieldset>
+        <div><label>Fix SpringBoard crashes / hangs</label></div>
+    </fieldset>
+    <label>1.5.3<br/><span style="font-size:12px">30 December 2014</span></label>
+    <fieldset>
+        <div><label>Fix video and audio recording hangs (snapchat, camera, voice memos, etc)</label></div>
+    </fieldset>
+    <label>1.5.2<br/><span style="font-size:12px">29 December 2014</span></label>
+    <fieldset>
+        <div><label>Made auto-adjust preamp less sensitive (AKA fix low volume issues)</label></div>
+        <div><label>mediaserverd crash fixes</label></div>
+        <div><label>get rid of popping sounds</label></div>
+        <div><label>traducir a español</label></div>
+    </fieldset>
+
+    <label>1.5<br/><span style="font-size:12px">16 December 2014</span></label>
+	<fieldset>
+		<div><label>Fix preamp. Audio is now at normal levels.</label></div>
+		<div><label>Completely redesigned presets menu. Looks halfway decent now.</label></div>
+		<div><label>Translations in Simplified Chinese, Traditional Chinese and French</label></div>
+	</fieldset>
 </panel>
-</body>
-</html>
+
+</body></html>
