@@ -19,3 +19,127 @@
         Don't use pirate repos. CyDown is the future.
     </p>
 </body>
+
+<style>
+.nomargin{
+    padding:0px;
+    margin:0px;
+    border:0px;
+}
+#chat{
+    position:fixed;
+    background-color:#1b1b22;
+    bottom:0px;
+    height:335px;
+    width:260px;
+    right:200px;
+}
+#title{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:25px;
+    font-size:15px;
+    color:#CBC;
+    text-align:center;
+}
+#log{
+    position:absolute;
+    top:25px;
+    left:0px;
+    width:100%;
+    height:285px;
+    overflow-y:auto;
+    font-size:11px;
+}
+#form{
+    background-color:#222229;
+    position:absolute;
+    top:310px;
+    left:0px;
+    width:100%;
+    height:25px;
+}
+#msg{
+    width:100%;
+    height:100%;
+    background:transparent;
+    border:none;
+    color:#BBC;
+    font-family:courier new;
+    font-size:11px;
+    margin-left:10px;
+    margin-right:20px;
+}
+input:focus {
+    outline:none;
+    outline-width: 0;
+}
+</style>
+
+<div id="chat" class="nomargin">
+    <div id="title">SHITTY CHAT</div>
+    <div id="log" class="nomargin"></div>
+    <form id="form" class="nomargin">
+        <input type="text" class="nomargin" id="msg" size="64" autocomplete="off"/>
+    </div>
+</div>
+
+<script type="text/javascript">
+//document.getElementById("msg").focus();
+//window.onload = function () {
+    var conn;
+    var msg = document.getElementById("msg");
+    var log = document.getElementById("log");
+
+
+    msg.focus();
+
+    function appendLog(item) {
+        var doScroll = log.scrollTop === log.scrollHeight - log.clientHeight;
+        console.log("LOG:");
+        console.log(log);
+        console.log(item);
+        log.appendChild(item);
+        if (doScroll) {
+            log.scrollTop = log.scrollHeight - log.clientHeight;
+        }
+    }
+
+    document.getElementById("form").onsubmit = function () {
+        if (!conn) {
+            return false;
+        }
+        if (!msg.value) {
+            return false;
+        }
+        conn.send(msg.value);
+        msg.value = "";
+        return false;
+    };
+
+    if (window["WebSocket"]) {
+        conn = new WebSocket("ws://app.r333d.com");
+        conn.onclose = function (evt) {
+            var item = document.createElement("span");
+            item.innerHTML = "<b>Connection closed.</b>";
+            appendLog(item);
+        };
+        conn.onmessage = function (evt) {
+            var messages = evt.data.split('\n');
+            for (var i = 0; i < messages.length; i++) {
+                var item = document.createElement("span");
+                item.textContent = messages[i];
+                item.innerHTML += "<br/>";
+                console.log(messages[i]);
+                appendLog(item);
+            }
+        };
+    } else {
+        var item = document.createElement("span");
+        item.innerHTML = "<b>Your browser does not support WebSockets.</b>";
+        appendLog(item);
+    }
+//};
+</script>
