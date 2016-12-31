@@ -1,13 +1,15 @@
-<title>r333d</title>
-
-
-
-
 <div id="chat" class="nomargin">
-    <div id="title">SHITTY CHAT</div>
-    <div id="log" class="nomargin"></div>
+    <div id="title">
+        chat
+        <div style="float:right;font-size:7px;margin:4px;width:100px;">
+            k
+        </div>
+    </div>
+    <div id="log" class="nomargin">
+        <span id="loading">Loading...</span>
+    </div>
     <form id="form" class="nomargin">
-        <input type="text" class="nomargin" id="msg" size="64" autocomplete="off"/>
+        <input type="text" class="nomargin" id="msg" size="64" placeholder="Type your message here" autocomplete="off"/>
     </div>
 </div>
 
@@ -22,6 +24,19 @@
 
 <!-- 260 x 335 -->
 <style>
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #aaaaaa;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #aaaaaa;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #aaaaaa;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #aaaaaa;
+}
+
 body{
     background-color:black;
     color:#BBB;
@@ -148,6 +163,7 @@ input:focus {
     var conn;
     var msg = document.getElementById("msg");
     var log = document.getElementById("log");
+    var loading = document.getElementById("loading");
 
 
     msg.focus();
@@ -183,10 +199,11 @@ input:focus {
             appendLog(item);
         };
         conn.onmessage = function (evt) {
+            loading.innerHTML = "";
             var messages = evt.data.split('\n');
             for (var i = 0; i < messages.length; i++) {
                 var item = document.createElement("span");
-                item.textContent = messages[i];
+                item.innerHTML = messages[i];
                 item.innerHTML += "<br/>";
                 console.log(messages[i]);
                 appendLog(item);
